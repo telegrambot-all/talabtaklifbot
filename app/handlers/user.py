@@ -54,7 +54,7 @@ async def complaint_start(message: Message, state: FSMContext):
     await message.answer("Qaysi filialdansiz?", reply_markup=branches_keyboard())
 
 
-@router.message(F.text.func(lambda text: text and "bekor" in text.lower()))
+@router.message(F.text.in_(["⬅️ Bekor qilish", "Bekor qilish", "❌ Bekor qilish"]))
 async def cancel_flow(message: Message, state: FSMContext):
     await state.clear()
     await message.answer(
