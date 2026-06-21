@@ -58,10 +58,9 @@ async def complaint_start(message: Message, state: FSMContext):
 async def cancel_flow(message: Message, state: FSMContext):
     await state.clear()
     await message.answer(
-        "Amal bekor qilindi. Asosiy menyuga qaytdingiz.",
-        reply_markup=_main_menu(message.from_user.id),
+        "🏠 Asosiy menyu",
+        reply_markup=_main_menu(message.from_user.id)
     )
-
 @router.message(ComplaintStates.choosing_branch)
 async def choose_branch(message: Message, state: FSMContext):
     if message.text not in BRANCHES:
